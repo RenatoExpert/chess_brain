@@ -21,13 +21,20 @@ The representation used on chess official rules, from A1 to H8.
 #### Convertion
 ##### Pseudo code formula
 ```
-to_ip (cp) {
+to_ip (cp) -> u8 {
     return cp[x] + (cp[y]*8);
 }
-to_cp (ip) {
+to_cp (ip) -> (u8, u8) {
     return { x: (ip % 8), y: (ip / 8) };
 }
-to_hp (cp) {
+to_hp (cp) -> String {
+    let letter: char = switch cp[0] {
+        0: A
+        1: B
+        ...
+    }
+    let number = to_str (cp[1]+1);
+    return letter+number;
 }
 ```
 ##### Examples
